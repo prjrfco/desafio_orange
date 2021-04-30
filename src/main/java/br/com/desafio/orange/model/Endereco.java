@@ -1,6 +1,11 @@
 package br.com.desafio.orange.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "endereco", schema = "desafio_orange")
@@ -11,9 +16,12 @@ public class Endereco {
     private Long id;
 
     @ManyToOne
+    @NotNull
     private Usuario usuario;
 
     @Column(name = "cep")
+    @NotBlank
+    @Size(max = 9, min = 8)
     private String cep;
 
     @Column(name = "logradouro")
@@ -32,6 +40,7 @@ public class Endereco {
     private String estado;
 
     @Column(name = "numero")
+    @NotBlank
     private String numero;
 
     public Long getId() {

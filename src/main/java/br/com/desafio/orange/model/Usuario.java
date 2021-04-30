@@ -1,9 +1,12 @@
 package br.com.desafio.orange.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -16,16 +19,22 @@ public class Usuario {
     private Long id;
 
     @Column(name = "nome")
+    @NotBlank
     private String nome;
 
     @Column(name = "email")
+    @NotBlank
+    @Email
     private String email;
 
     @Column(name = "cpf")
+    @NotBlank
+    @CPF
     private String cpf;
 
     @Column(name = "data_nascimento")
     @JsonFormat(pattern = "dd/MM/yyyy")
+    @NotNull(message = "não pode estar vazio")
     private LocalDate dataNascimento;
 
     @OneToMany(mappedBy = "usuario")
