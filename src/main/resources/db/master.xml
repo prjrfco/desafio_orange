@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+	  https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="202104272020" author="francisco" dbms="postgresql">
+        <sqlFile path="changelog/202104272020_create_table_usuario.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="202104281313" author="francisco" dbms="postgresql">
+        <sqlFile path="changelog/202104281313_create_table_endereco.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+</databaseChangeLog>
