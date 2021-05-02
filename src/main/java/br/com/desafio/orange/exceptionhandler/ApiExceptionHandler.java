@@ -25,7 +25,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     private MessageSource messageSource;
 
     @ExceptionHandler(EntidadeNaoEncontradaException.class)
-    public ResponseEntity<Object> handlerEntidadeNaoEncontrada(NegocioException ex, WebRequest request) {
+    public ResponseEntity<Object> handlerEntidadeNaoEncontrada(EntidadeNaoEncontradaException ex, WebRequest request) {
         var status = HttpStatus.NOT_FOUND;
 
         var problema = new Problema();
@@ -52,6 +52,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 
         var campos = new ArrayList<Problema.Campo>();
+
         for (ObjectError error : ex.getBindingResult().getAllErrors()) {
 
             String nome = ((FieldError) error).getField();

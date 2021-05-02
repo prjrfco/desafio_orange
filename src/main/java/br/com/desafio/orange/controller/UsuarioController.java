@@ -22,7 +22,7 @@ public class UsuarioController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public UsuarioDTO findAllByUsuarioId(@PathVariable Long id) {
+    public UsuarioDTO findById(@PathVariable Long id) {
 
         if (usuarioRepository.findById(id).isEmpty()){
             throw new EntidadeNaoEncontradaException("Usuário não encontrado!");
